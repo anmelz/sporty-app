@@ -29,37 +29,30 @@ npm run cap:android
 
 ## Configuración
 
-- **URL**: La app carga `https://www.sportyven.com` en un WebView.
+- **URL**: La app carga `https://www.sportyven.com` en un WebView
 - **App ID**: `com.sportyven.app`
+- **Deep link**: `sporty://auth/callback` (para OAuth)
 - **Config**: `capacitor.config.json`
 
-## OAuth (Google Login)
+## OAuth (Google Login) - Supabase
 
-Para que el login con Google funcione en la app:
+Para que el login con Google funcione en la app nativa:
 
-1. En [Supabase Dashboard](https://supabase.com/dashboard) → Authentication → URL Configuration
-2. Añadir a **Redirect URLs**: `com.sportyven.app://**` (iOS) y el scheme equivalente para Android
+1. Ir a [Supabase Dashboard](https://supabase.com/dashboard) → tu proyecto
+2. **Authentication** → **URL Configuration**
+3. En **Redirect URLs**, añadir:
+   - `sporty://auth/callback`
+   - `https://www.sportyven.com/auth/callback` (si no está ya)
+
+La app usa el scheme `sporty://` para capturar el redirect de OAuth cuando se abre en navegador externo.
 
 ## Iconos y Splash
 
-Los iconos por defecto son los de Capacitor. Para usar los de Sporty:
-
-1. Copiar `icon-192.png` y `icon-512.png` desde el proyecto web (`sports-scheduler/public/icons/`)
-2. Usar [@capacitor/assets](https://github.com/ionic-team/capacitor-assets) para generar los tamaños nativos:
+Los iconos de Sporty están en `resources/` (icon.png, splash.png). Para regenerar los assets nativos:
 
 ```bash
 npx @capacitor/assets generate
-```
-
-## Subir a GitHub
-
-1. Crear el repositorio en [github.com/new](https://github.com/new): nombre `sporty-app`, sin README
-2. Ejecutar:
-
-```bash
-git remote add origin https://github.com/anmelz/sporty-app.git
-git branch -M main
-git push -u origin main
+npm run cap:sync
 ```
 
 ## Repositorios
