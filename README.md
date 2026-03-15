@@ -51,7 +51,18 @@ Los iconos por defecto son los de Capacitor. Para usar los de Sporty:
 npx @capacitor/assets generate
 ```
 
-## Repositorio
+## Subir a GitHub
+
+1. Crear el repositorio en [github.com/new](https://github.com/new): nombre `sporty-app`, sin README
+2. Ejecutar:
+
+```bash
+git remote add origin https://github.com/anmelz/sporty-app.git
+git branch -M main
+git push -u origin main
+```
+
+## Repositorios
 
 - **Web**: [sports-scheduler](https://github.com/anmelz/sports-scheduler)
-- **App nativa**: Este repositorio
+- **App nativa**: [sporty-app](https://github.com/anmelz/sporty-app)
